@@ -1,4 +1,4 @@
-# utpinfo
+# Utpinfo
 
 A new Flutter project.
 
