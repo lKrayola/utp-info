@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "100072130371",
+    "firebase_url": "https://udaemon-42b6e.firebaseio.com",
+    "project_id": "udaemon-42b6e",
+    "storage_bucket": "udaemon-42b6e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:100072130371:android:d4632a9c021e62e8",
+        "android_client_info": {
+          "package_name": "com.metamagic.utpinfo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "100072130371-hgsd3kps23156gmftub6b10r3485plp5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCZGXAInPHdV3EePNM9hRM2UKxtAgOUDzY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "100072130371-hgsd3kps23156gmftub6b10r3485plp5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
