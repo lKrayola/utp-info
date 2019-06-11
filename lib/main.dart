@@ -38,20 +38,70 @@ class _LoginState extends State<Login> {
 
   @override
   Widget build(BuildContext context) {
-    
+
     return Scaffold(
+      backgroundColor: Colors.green[50],
       appBar: AppBar(
         title: Text("UTP Info Demo Login"),
         backgroundColor: Colors.green[900],
       ),
       body: Center(
-        child: RaisedButton(
-          child: Text('Login'),
-          onPressed: (){
-            Navigator.pushNamed(context, '/Home');
-          }
-        ,)
-      ),
+        child: ListView(
+          children: <Widget>[
+            SizedBox(height: 80.0),
+            Column(
+              children: <Widget>[
+              //Icon(Icons.)
+              SizedBox(height:20.0),
+              //Text('Login'),
+              ]
+            ,),
+            SizedBox(height: 100.0),
+            TextField(
+              cursorColor: Colors.green,
+              keyboardType: TextInputType.emailAddress,
+              autofocus: false,
+              decoration: InputDecoration(
+                //labelText: 'Nombre de Usuario',
+                hintText: 'Usuario',
+                filled: true,
+                contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+                border: InputBorder.none,
+              ),
+            ),
+            SizedBox(height: 12.0),
+            TextField(
+              cursorColor: Colors.green,
+              autofocus: false,
+              decoration: InputDecoration(
+                //labelText: 'Contraseña',
+                contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+                border: InputBorder.none,
+                hintText: 'Contraseña',
+                filled: true,
+              ),
+              obscureText: true,
+            ),
+            ButtonBar(
+              children: <Widget>[
+                FlatButton(
+                  child: Text('Registrarse'),
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
+                  onPressed: (){
+                  },
+                ),
+                RaisedButton(
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
+                  child: Text('Entrar'),
+                  onPressed: (){
+                    Navigator.pushNamed(context, '/Home');
+                  }
+                )
+              ],
+            )
+          ],
+        )
+      )
     );
   }
 }
@@ -126,12 +176,21 @@ void _onPageChanged(int page){
             children: <Widget>[
               Container(
                 color: Colors.green[400],
+                child: Placeholder(
+                  color: Colors.purpleAccent
+                ),
               ),
               Container(
                 color: Colors.green[300],
+                child: Placeholder(
+                  color: Colors.purpleAccent,
+                ),
               ),
               Container(
                 color: Colors.green[500],
+                child: Placeholder(
+                  color: Colors.purpleAccent,
+                ),
               ),
             ],
           )
