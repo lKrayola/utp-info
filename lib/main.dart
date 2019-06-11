@@ -69,17 +69,30 @@ class Home extends StatefulWidget {
 class _Home extends State<Home>{
 
   @override
-  var currentPageValue = 0.0;
   int _selectedIndex = 1;
+
   PageController controller = PageController(
-    initialPage: 1
+    initialPage: 1,
   );
 
+//Navigation bar signal to page changing, connected
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
+      controller.animateToPage(
+        _selectedIndex,
+        duration: Duration(milliseconds: 500),
+        curve: Curves.fastOutSlowIn,
+      );
     });
   }
+
+//PageViewSwipe signal to nav bar focus change, connected
+void _onPageChanged(int page){
+  setState(() {
+    _selectedIndex = page; 
+  });
+}
 
 //Back button confirmation from home page
   Future<bool> _onBackPressed(){
@@ -109,7 +122,7 @@ class _Home extends State<Home>{
         body: Center( //Swiping Page Views
           child: PageView(
             controller: controller,
-            
+            onPageChanged: _onPageChanged,
             children: <Widget>[
               Container(
                 color: Colors.green[400],
