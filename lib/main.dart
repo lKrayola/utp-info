@@ -70,8 +70,10 @@ class _Home extends State<Home>{
 
   @override
   var currentPageValue = 0.0;
-  int _selectedIndex = 0;
-  PageController controller = PageController();
+  int _selectedIndex = 1;
+  PageController controller = PageController(
+    initialPage: 1
+  );
 
   void _onItemTapped(int index) {
     setState(() {
@@ -124,12 +126,12 @@ class _Home extends State<Home>{
         bottomNavigationBar: BottomNavigationBar(
           items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(
-              icon: Icon(Icons.home),
-              title: Text('Inicio'),
-            ),
-            BottomNavigationBarItem(
               icon: Icon(Icons.search),
               title: Text('Buscar'),
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home),
+              title: Text('Inicio'),
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.account_circle),
