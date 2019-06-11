@@ -12,7 +12,7 @@ class Home extends StatefulWidget {
 
 class _Home extends State<Home>{
 
-  @override
+  
   int _selectedIndex = 1;
 
   PageController controller = PageController(
