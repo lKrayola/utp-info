@@ -33,6 +33,7 @@ class _LoginState extends State<Login> {
               ]
             ,),
             SizedBox(height: 100.0),
+            //                              Campo Correo
             TextField(
               cursorColor: Colors.green,
               keyboardType: TextInputType.emailAddress,
@@ -46,6 +47,7 @@ class _LoginState extends State<Login> {
               ),
             ),
             SizedBox(height: 12.0),
+            //                              Campo Contraseña
             TextField(
               cursorColor: Colors.green,
               autofocus: false,
@@ -60,6 +62,7 @@ class _LoginState extends State<Login> {
             ),
             ButtonBar(
               children: <Widget>[
+                //                              Boton Registrarse
                 FlatButton(
                   child: Text('Registrarse'),
                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
@@ -67,6 +70,7 @@ class _LoginState extends State<Login> {
                     Navigator.pushNamed(context, '/Register');
                   },
                 ),
+                //                              Boton Entrar
                 RaisedButton(
                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
                   child: Text('Entrar'),
