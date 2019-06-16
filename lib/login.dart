@@ -64,6 +64,7 @@ class _LoginState extends State<Login> {
                   child: Text('Registrarse'),
                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
                   onPressed: (){
+                    Navigator.pushNamed(context, '/Register');
                   },
                 ),
                 RaisedButton(
