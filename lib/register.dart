@@ -21,6 +21,7 @@ class Register extends StatelessWidget {
               ]
             ,),
             SizedBox(height: 70.0),
+            //                              Campo de Nombre
             TextField(
               cursorColor: Colors.green,
               autofocus: false,
@@ -33,6 +34,7 @@ class Register extends StatelessWidget {
               ),
             ),
             SizedBox(height: 12.0),
+            //                              Campo de Contraseña
             TextField(
               cursorColor: Colors.green,
               autofocus: false,
@@ -45,6 +47,7 @@ class Register extends StatelessWidget {
               obscureText: true,
             ),
             SizedBox(height: 12.0),
+            //                              Campo de Facultad
             TextField(
               cursorColor: Colors.green,
               autofocus: false,
@@ -58,6 +61,7 @@ class Register extends StatelessWidget {
               obscureText: false,
             ),
             SizedBox(height: 12.0),
+            //                              Campo de Carrera
             TextField(
               cursorColor: Colors.green,
               autofocus: false,
@@ -71,6 +75,7 @@ class Register extends StatelessWidget {
               obscureText: false,
             ),
             SizedBox(height: 12.0),
+            //                              Campo de Correo
             TextField(
               cursorColor: Colors.green,
               keyboardType: TextInputType.emailAddress,
@@ -86,6 +91,7 @@ class Register extends StatelessWidget {
             ),
             ButtonBar(
               children: <Widget>[
+                //                              Boton de Cancelar
                 RaisedButton(
                   child: Text('Cancelar'),
                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
@@ -93,6 +99,7 @@ class Register extends StatelessWidget {
                     Navigator.pop(context, true);
                   },
                 ),
+                //                              Boton de Registrarse
                 RaisedButton(
                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
                   child: Text('Registrarse'),
