@@ -1,10 +1,12 @@
 //import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:utpinfo/welcome.dart';
 //import 'package:flutter/rendering.dart';
 //import 'dart:io';
 //import 'package:flutter/services.dart';
 import 'login.dart';
 import 'home.dart';
+import 'welcome.dart';
 
 void main() => runApp(MyApp());
 
@@ -16,11 +18,12 @@ class MyApp extends StatelessWidget {
 
     return MaterialApp(
       title: 'UTP Info Demo',
-      home: new Login(),
+      home: new Welcome(),
       //initialRoute: '/',
       routes: {
         '/Login': (context) => new Login(),
         '/Home': (context) => new Home(),
+        '/Welcome': (context) => new Welcome(),
       },
     ); 
   }
