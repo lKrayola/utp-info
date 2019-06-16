@@ -23,7 +23,6 @@ class Register extends StatelessWidget {
             SizedBox(height: 70.0),
             TextField(
               cursorColor: Colors.green,
-              keyboardType: TextInputType.emailAddress,
               autofocus: false,
               decoration: InputDecoration(
                 labelText: 'Nombre Completo',
@@ -74,6 +73,7 @@ class Register extends StatelessWidget {
             SizedBox(height: 12.0),
             TextField(
               cursorColor: Colors.green,
+              keyboardType: TextInputType.emailAddress,
               autofocus: false,
               decoration: InputDecoration(
                 labelText: 'Correo electronico',
