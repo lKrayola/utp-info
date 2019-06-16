@@ -38,8 +38,8 @@ class _LoginState extends State<Login> {
               keyboardType: TextInputType.emailAddress,
               autofocus: false,
               decoration: InputDecoration(
-                //labelText: 'Nombre de Usuario',
-                hintText: 'Usuario',
+                labelText: 'Correo electronico',
+                hintText: 'Ejemplo: chichero@utp.ac.pa',
                 filled: true,
                 contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
                 border: InputBorder.none,
@@ -50,10 +50,10 @@ class _LoginState extends State<Login> {
               cursorColor: Colors.green,
               autofocus: false,
               decoration: InputDecoration(
-                //labelText: 'Contraseña',
+                labelText: 'Contraseña',
                 contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
                 border: InputBorder.none,
-                hintText: 'Contraseña',
+                //hintText: 'Contraseña',
                 filled: true,
               ),
               obscureText: true,
