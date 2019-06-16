@@ -7,6 +7,7 @@ import 'package:utpinfo/welcome.dart';
 import 'login.dart';
 import 'home.dart';
 import 'welcome.dart';
+import 'register.dart';
 
 void main() => runApp(MyApp());
 
@@ -24,6 +25,7 @@ class MyApp extends StatelessWidget {
         '/Login': (context) => new Login(),
         '/Home': (context) => new Home(),
         '/Welcome': (context) => new Welcome(),
+        '/Register': (context) => new Register(),
       },
     ); 
   }
