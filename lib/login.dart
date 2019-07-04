@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+//import 'package:utpinfo/home.dart';
+import 'state_widget.dart';
 
-//Simple template login screen with one button
 class Login extends StatefulWidget {
   Login({Key key, this.title}) : super(key: key);
 
@@ -13,6 +14,9 @@ class Login extends StatefulWidget {
 class _LoginState extends State<Login> {
 
   @override
+
+  
+
   Widget build(BuildContext context) {
 
     return Scaffold(
@@ -75,10 +79,33 @@ class _LoginState extends State<Login> {
                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
                   child: Text('Entrar'),
                   onPressed: (){
-                    Navigator.pushNamed(context, '/Home');
+                    
                   }
                 )
               ],
+            ),
+            RaisedButton(
+              onPressed: () => StateWidget.of(context).signInWithGoogle(),
+              padding: EdgeInsets.only(top: 3.0, bottom: 3.0, left: 3.0),
+              color: const Color(0xFFFFFFFF),
+              child: new Row( 
+                mainAxisSize: MainAxisSize.min,
+                children: <Widget>[
+                  //new Image.asset(
+                  //  'asset/google_button.jpg',
+                  //  height: 40.0,
+                  //),
+                  new Container(
+                      padding: EdgeInsets.only(left: 10.0, right: 10.0),
+                      child: new Text( 
+                        "Sign in with Google",
+                        style: TextStyle(
+                            color: Colors.black87,
+                            fontWeight: FontWeight.bold),
+                      )
+                  ),
+                ],
+              ),
             )
           ],
         )
