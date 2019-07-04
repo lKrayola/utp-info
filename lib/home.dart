@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'welcome.dart';
+import 'state_widget.dart';
+import 'state.dart';
 
 class Home extends StatefulWidget {
 
@@ -11,7 +14,7 @@ class Home extends StatefulWidget {
 }
 
 class _Home extends State<Home>{
-
+  StateModel appState;
   
   int _selectedIndex = 1;
 
@@ -59,7 +62,7 @@ void _onPageChanged(int page){
     );
   }
 
-  Widget build(BuildContext context) {
+  Widget _buildHomeScreen({Widget body}) {
     return WillPopScope(
       onWillPop: _onBackPressed,
       child: Scaffold(
@@ -82,9 +85,29 @@ void _onPageChanged(int page){
               ),
               Container(
                 color: Colors.green[500],
-                child: Placeholder(
-                  color: Colors.purpleAccent,
-                ),
+                child: Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,         
+                    children: <Widget>[          
+                      new Container(
+                        padding: EdgeInsets.all(20.0),
+                        height: 150.0,
+                        width: 150.0,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          image: DecorationImage(
+                            fit: BoxFit.fill,
+                            image: NetworkImage(appState.user.photoUrl.toString()),
+                          ),
+                        )),
+                      
+                      new Text(            
+                        'Hello, ' '${appState.user.displayName}' '!',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(color: Colors.black, fontSize: 25),
+                      )
+                  ],
+                )),
               ),
             ],
           )
@@ -110,5 +133,27 @@ void _onPageChanged(int page){
         ),
       )
     );
+  }
+
+  Widget _buildContent() {
+    if (appState.isLoading) {
+      return _buildLoadingIndicator();
+    } else if (!appState.isLoading && appState.user == null) {
+      return new Welcome();
+    } else {
+      return _buildHomeScreen();
+    }
+  }
+
+  Center _buildLoadingIndicator() {
+    return Center(
+      child: new CircularProgressIndicator(),
+    );
+  }
+  @override
+  Widget build(BuildContext context) {
+    // Build the content depending on the state:
+    appState = StateWidget.of(context).state;
+    return _buildContent();
   }
 }
