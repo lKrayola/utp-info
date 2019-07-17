@@ -32,6 +32,7 @@ class _Home extends State<Home>{
     super.initState();
 
     _checkEmailVerification();
+  }
 
   void _checkEmailVerification() async {
     _isEmailVerified = await widget.auth.isEmailVerified();
