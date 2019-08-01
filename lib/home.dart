@@ -5,6 +5,8 @@ import 'state.dart';
 import 'dart:async';
 import 'auth.dart';
 import 'package:firebase_database/firebase_database.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'searchservice.dart';
 
 class Home extends StatefulWidget {
 
@@ -22,9 +24,41 @@ class Home extends StatefulWidget {
 
 class _Home extends State<Home>{
 
+  var queryResultSet = [];
+  var tempSearchStore = [];
+
   final FirebaseDatabase _database = FirebaseDatabase.instance;
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   bool _isEmailVerified = false;
+
+  initiateSearch(value) {
+    if (value.length == 0) {
+      setState(() {
+        queryResultSet = [];
+        tempSearchStore = [];
+      });
+    }
+
+    var capitalizedValue =
+        value.substring(0, 1).toUpperCase() + value.substring(1);
+
+    if (queryResultSet.length == 0 && value.length == 1) {
+      SearchService().searchByName(value).then((QuerySnapshot docs) {
+        for (int i = 0; i < docs.documents.length; ++i) {
+          queryResultSet.add(docs.documents[i].data);
+        }
+      });
+    } else {
+      tempSearchStore = [];
+      queryResultSet.forEach((element) {
+        if (element['nombre'].startsWith(capitalizedValue)) {
+          setState(() {
+            tempSearchStore.add(element);
+          });
+        }
+      });
+    }
+  }
 
   @override
 
@@ -165,9 +199,45 @@ void _onPageChanged(int page){
             children: <Widget>[
               Container(
                 color: Colors.green[400],
-                child: Placeholder(
-                  color: Colors.purpleAccent
-                ),
+                child: ListView(
+                  children: <Widget>[
+                    Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: TextField(
+                        onChanged: (val) {
+                          initiateSearch(val);
+                        },
+                        decoration: InputDecoration(
+                          prefixIcon: IconButton(
+                            color: Colors.black,
+                            icon: Icon(Icons.arrow_back),
+                            iconSize: 20.0,
+                            onPressed: () {
+                              
+                            },
+                          ),
+                          contentPadding: EdgeInsets.only(left: 25.0),
+                          hintText: 'Busqueda por nombre',
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(4.0)
+                          ),
+                        )
+                      )
+                    ),
+                    SizedBox(height: 10.0,),
+                    GridView.count(
+                      padding: EdgeInsets.only(left: 10.0, right: 10.0),
+                      crossAxisCount: 2,
+                      crossAxisSpacing: 4.0,
+                      mainAxisSpacing: 4.0,
+                      primary: false,
+                      shrinkWrap: true,
+                      children: tempSearchStore.map((element) {
+                        return buildResultCard(element);
+                      }).toList()
+                    )
+                  ],
+                )
               ),
               Container(
                 color: Colors.green[300],
@@ -203,7 +273,7 @@ void _onPageChanged(int page){
                           style: new TextStyle(fontSize: 17.0, color: Colors.white)),
                           onPressed: () {
                             _signOut();
-                            Navigator.pop(context, true);
+                            //Navigator.pop(context, true);
                           }
                       )
                     ],
@@ -256,4 +326,22 @@ void _onPageChanged(int page){
     appState = StateWidget.of(context).state;
     return _buildContent();
   }
+}
+
+Widget buildResultCard(data){
+  return Card(
+    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
+    elevation: 2.0,
+    child: Container(
+      child: Center(
+        child: Text(data['nombre'],
+        textAlign: TextAlign.center,
+        style: TextStyle(
+          color: Colors.black,
+          fontSize: 20.0,
+        ),
+        )
+      )
+    )
+  );
 }
