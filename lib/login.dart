@@ -127,17 +127,29 @@ class _LoginState extends State<Login> {
               child: new ListView(
                 shrinkWrap: true,
                 children: <Widget>[
+                  SizedBox(height: 50.0),
+                  new Container(
+                    padding: EdgeInsets.all(20.0),
+                    height: 150.0,
+                    width: 150.0,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      image: DecorationImage(
+                        fit: BoxFit.scaleDown,
+                        image: AssetImage('asset/utp.png')
+                      ),
+                    )
+                  ),
                   _showErrorMessage(),
                   _showCircularProgress(),
-                  SizedBox(height: 80.0),
                   Column(
                     children: <Widget>[
                     //Icon(Icons.)
-                    SizedBox(height:20.0),
+                    SizedBox(height:0.0),
                     //Text('Login'),
                     ]
                   ,),
-                  SizedBox(height: 100.0),
+                  SizedBox(height: 50.0),
                   //                              Campo Correo
                   TextFormField(
                     cursorColor: Colors.green,
