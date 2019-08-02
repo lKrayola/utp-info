@@ -241,16 +241,27 @@ void _onPageChanged(int page){
               ),
               Container(
                 color: Colors.green[300],
-                child: Placeholder(
-                  color: Colors.purpleAccent,
-                ),
+                child: new Container(
+                    //padding: EdgeInsets.zero,
+                    //height: 150.0,
+                    //width: 150.0,
+                    decoration: BoxDecoration(
+                      //border: BoxBorder(body),
+                      borderRadius: BorderRadius.circular(10),
+                      //shape: BoxShape.circle,
+                      image: DecorationImage(
+                        fit: BoxFit.fitWidth,
+                        image: AssetImage('asset/fisc.png')
+                      ),
+                    )
+                  ),
               ),
               Container(
                 color: Colors.green[500],
                 child: Center(
                   child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,         
-                    children: <Widget>[          
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
                       new Container(
                         padding: EdgeInsets.all(20.0),
                         height: 150.0,
