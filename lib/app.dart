@@ -6,8 +6,10 @@ import 'welcome.dart';
 import 'register.dart';
 import 'root.dart';
 import 'auth.dart';
+import 'teacherinfo.dart';
 
 class MyApp extends StatelessWidget {
+  dynamic data;
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -19,7 +21,8 @@ class MyApp extends StatelessWidget {
         '/Login': (context) => new Login(),
         '/Home': (context) => new Home(),
         '/Welcome': (context) => new Welcome(),
-        '/Register': (context) => new Register()
+        '/Register': (context) => new Register(),
+        '/TeacherInfo': (context) => new TeacherInfo(data)
       },
     ); 
   }

@@ -7,6 +7,7 @@ import 'auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'searchservice.dart';
+import 'teacherinfo.dart';
 
 class Home extends StatefulWidget {
 
@@ -233,7 +234,7 @@ void _onPageChanged(int page){
                       primary: false,
                       shrinkWrap: true,
                       children: tempSearchStore.map((element) {
-                        return buildResultCard(element);
+                        return buildResultCard(context, element);
                       }).toList()
                     )
                   ],
@@ -339,12 +340,15 @@ void _onPageChanged(int page){
   }
 }
 
-Widget buildResultCard(data){
+Widget buildResultCard(BuildContext context,data){
   return Card(
     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
     elevation: 2.0,
     child: Container(
-      child: Center(
+      child: FlatButton(
+        onPressed: () {
+          Navigator.of(context).push(MaterialPageRoute(builder: (context)=>TeacherInfo(data)));
+        },
         child: Text(data['nombre'],
         textAlign: TextAlign.center,
         style: TextStyle(
