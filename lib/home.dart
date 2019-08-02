@@ -212,12 +212,12 @@ void _onPageChanged(int page){
                             color: Colors.black,
                             icon: Icon(Icons.arrow_back),
                             iconSize: 20.0,
-                            onPressed: () {
+                            onPressed: () => {
                               
                             },
                           ),
                           contentPadding: EdgeInsets.only(left: 25.0),
-                          hintText: 'Busqueda por nombre',
+                          hintText: 'Búsqueda por nombre',
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(4.0)
                           ),
