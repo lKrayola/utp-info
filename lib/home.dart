@@ -273,9 +273,9 @@ void _onPageChanged(int page){
                             fit: BoxFit.fill,
                             image: NetworkImage(appState.user.photoUrl.toString()),
                           ),
-                        )),
-                      
-                      new Text(            
+                        )
+                      ),
+                      new Text(
                         'Hello, ' '${appState.user.displayName}' '!',
                         textAlign: TextAlign.center,
                         style: TextStyle(color: Colors.black, fontSize: 25),
