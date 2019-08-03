@@ -66,6 +66,32 @@ class TeacherInfoState extends State<TeacherInfo>{
               color: Colors.green[300]
             ),
           ),
+          Container(
+            child: Text(
+              'Lunes'+'\n'+'\n'
+              +data['horario']['lunes']['bloque1']['asignatura']+'\n'
+              +data['horario']['lunes']['bloque1']['horainicio'][0]
+              +data['horario']['lunes']['bloque1']['horainicio'][1]
+              +':'
+              +data['horario']['lunes']['bloque1']['horainicio'][2]
+              +data['horario']['lunes']['bloque1']['horainicio'][3]
+              +' - '
+              +data['horario']['lunes']['bloque1']['horafinal'][0]
+              +data['horario']['lunes']['bloque1']['horafinal'][1]
+              +':'
+              +data['horario']['lunes']['bloque1']['horafinal'][2]
+              +data['horario']['lunes']['bloque1']['horafinal'][3]
+              +'\n'
+              +'Aula: '+data['horario']['lunes']['bloque1']['aula']
+              +'\n\n'
+              +'Horas de Oficina: '
+              ,
+              style: TextStyle(
+                fontSize: 16
+              ),
+            ),
+            padding: EdgeInsets.fromLTRB(26.0, 16.0, 16.0, 0.0),
+          ),
         ]
       ),
     );
