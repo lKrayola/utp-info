@@ -28,6 +28,8 @@ class _Home extends State<Home>{
   var queryResultSet = [];
   var tempSearchStore = [];
 
+  TextEditingController _textFieldController = TextEditingController();
+
   final FirebaseDatabase _database = FirebaseDatabase.instance;
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   bool _isEmailVerified = false;
@@ -59,6 +61,54 @@ class _Home extends State<Home>{
         }
       });
     }
+  }
+
+  void _showToast(BuildContext context){
+    final scaffold = Scaffold.of(context);
+    scaffold.showSnackBar(
+      SnackBar(
+        content: const Text('Reporte enviado correctamente'),
+        action: SnackBarAction(
+          label: 'Ok',
+          onPressed: scaffold.hideCurrentSnackBar,
+        ),
+      )
+    );
+  }
+
+  _displayErrorReportDialog(BuildContext context) async{
+    return showDialog(
+      context: context,
+      builder: (context){
+        return AlertDialog(
+          title: Text('Cuéntanos el problema'),
+          content: new TextField(
+            controller: _textFieldController,
+            decoration: InputDecoration(hintText: "Escribe aquí"),
+          ),
+          actions: <Widget>[
+            new FlatButton(
+              child: new Text('Cancelar'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+            new RaisedButton(
+              child: new Text('Enviar',
+                style: TextStyle(
+                  color: Colors.white
+                ),
+              ),
+              onPressed: () => {
+                Navigator.of(context).pop(),
+                //_showToast(context),
+                
+              }
+            )
+          ],
+        );
+      }
+    );
   }
 
   @override
@@ -280,13 +330,29 @@ void _onPageChanged(int page){
                         textAlign: TextAlign.center,
                         style: TextStyle(color: Colors.black, fontSize: 25),
                       ),
-                      new FlatButton(
-                        child: new Text('Logout',
-                          style: new TextStyle(fontSize: 17.0, color: Colors.white)),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      new RaisedButton(
+                        child: new Text('Cerrar Sesión',
+                          style: new TextStyle(fontSize: 17.0, color: Colors.black)),
                           onPressed: () {
                             _signOut();
                             //Navigator.pop(context, true);
                           }
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      FlatButton(
+                        child: Text('Reportar Error',
+                          style: TextStyle(
+                            color: Colors.black
+                          )
+                        ),
+                        onPressed: () => {
+                          _displayErrorReportDialog(context),
+                        }
                       )
                     ],
                 )),
