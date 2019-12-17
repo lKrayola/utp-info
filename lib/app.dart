@@ -23,6 +23,7 @@ class MyApp extends StatelessWidget {
         '/Welcome': (context) => new Welcome(),
         '/Register': (context) => new Register(),
         '/TeacherInfo': (context) => new TeacherInfo(data)
+        
       },
     ); 
   }
