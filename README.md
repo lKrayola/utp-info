@@ -2,6 +2,10 @@
 
 A new Flutter project.
 
+## Disclaimer
+I have not touched this project for 2 years and I do not think I am going be working with flutter anymore.
+That is why i will have it archived.
+
 ## Getting Started
 
 This project is a starting point for a Flutter application.
